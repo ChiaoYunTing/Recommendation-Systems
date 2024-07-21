@@ -1,6 +1,5 @@
 
 # Install required packages if not already installed
-!pip install tensorflow numpy
 
 import tensorflow as tf
 import time
