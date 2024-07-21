@@ -1,12 +1,16 @@
 import numpy as np
+import os
 
-def read_rating(path, num_users, num_items,num_total_ratings, a, b, train_ratio):
-    fp = open(path + "ratings.dat")
-
-    user_train_set = set()
-    user_test_set = set()
-    item_train_set = set()
-    item_test_set = set()
+def read_rating(path, num_users, num_items, num_total_ratings, a, b, train_ratio):
+    # Use os.path.join to correctly join the path and filename
+    file_path = os.path.join(path, "ratings.dat")
+    
+    with open(file_path, 'r') as fp:
+        # Rest of the function remains the same
+        user_train_set = set()
+        user_test_set = set()
+        item_train_set = set()
+        item_test_set = set()
 
     R = np.zeros((num_users,num_items))
     mask_R = np.zeros((num_users, num_items))
