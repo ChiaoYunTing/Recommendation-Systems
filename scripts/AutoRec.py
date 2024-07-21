@@ -14,8 +14,6 @@ import numpy as np
 import os
 import math
 
-# 其餘代碼保持不變
-
 # Install required packages if not already installed
 import tensorflow as tf
 import time
