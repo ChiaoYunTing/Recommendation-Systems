@@ -1,4 +1,21 @@
 
+import sys
+
+def custom_excepthook(type, value, traceback):
+    print(f"An error occurred: {type.__name__}: {value}")
+    sys.__excepthook__(type, value, traceback)
+
+sys.excepthook = custom_excepthook
+
+# 原有的導入語句
+import tensorflow as tf
+import time
+import numpy as np
+import os
+import math
+
+# 其餘代碼保持不變
+
 # Install required packages if not already installed
 import tensorflow as tf
 import time
