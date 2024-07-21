@@ -6,7 +6,6 @@ def read_rating(path, num_users, num_items, num_total_ratings, a, b, train_ratio
     file_path = os.path.join(path, "ratings.dat")
     
     with open(file_path, 'r') as fp:
-        # Rest of the function remains the same
         user_train_set = set()
         user_test_set = set()
         item_train_set = set()
