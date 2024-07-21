@@ -1,21 +1,9 @@
 
-import sys
-
-def custom_excepthook(type, value, traceback):
-    print(f"An error occurred: {type.__name__}: {value}")
-    sys.__excepthook__(type, value, traceback)
-
-sys.excepthook = custom_excepthook
-
-# 原有的導入語句
-import tensorflow as tf
-import time
-import numpy as np
-import os
-import math
-
 # Install required packages if not already installed
 import tensorflow as tf
+import tensorflow.compat.v1 as tf
+tf.disable_v2_behavior()
+
 import time
 import numpy as np
 import os
@@ -62,8 +50,9 @@ class AutoRec():
         self.global_step = tf.Variable(0, trainable=False)
         self.decay_epoch_step = args.decay_epoch_step
         self.decay_step = self.decay_epoch_step * self.num_batch
-        self.lr = tf.train.exponential_decay(self.base_lr, self.global_step,
-                                                   self.decay_step, 0.96, staircase=True)
+        self.lr = tf.compat.v1.train.exponential_decay(self.base_lr, self.global_step,
+            self.decay_step, 0.96, staircase=True)
+        
         self.lambda_value = args.lambda_value
 
         self.train_cost_list = []
